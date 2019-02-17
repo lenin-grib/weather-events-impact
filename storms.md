@@ -167,7 +167,7 @@ storms <- storms %>%
 storms<- storms %>% mutate(cropdmg.v = cropdmg*10^cropdmg.m)
 ```
 
-##Results
+## Results
 
 ### Health impact
 
