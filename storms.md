@@ -289,5 +289,5 @@ sessionInfo()
 ## [33] pillar_1.3.0     scales_1.0.0     backports_1.1.2  pkgconfig_2.0.2
 ```
 
-
+The full data for this research is available at [GitHub](https://github.com/lenin-grib/weather-events-impact)
 

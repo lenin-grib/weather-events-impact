@@ -154,5 +154,5 @@ ggplot(data=storms.econ, aes(x=reorder(evtype, -total), y=total/1000000000)) +
 sessionInfo()
 ```
 
-
+The full data for this research is available at [GitHub](https://github.com/lenin-grib/weather-events-impact)
 
