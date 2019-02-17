@@ -134,39 +134,56 @@ $(document).ready(function () {
 <h2>Loading and Processing the Raw Data</h2>
 <p>The data for this project comes from the U.S. National Oceanic and Atmospheric Administration’s (NOAA) storm database.</p>
 <p>There is also some documentation of the database available.</p>
-<p><em><a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf">National Weather Service Storm Data Documentation</a> </em><a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf">National Climatic Data Center Storm Events FAQ</a></p>
+<ul>
+<li><a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf">National Weather Service Storm Data Documentation</a></li>
+<li><a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf">National Climatic Data Center Storm Events FAQ</a></li>
+</ul>
 <pre class="r"><code>library(plyr)
 library(dplyr)
 download.file(&quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2&quot;, &quot;storms.bz2&quot;)
 storms &lt;- tbl_df(read.csv(&quot;storms.bz2&quot;))</code></pre>
 <p>First, let’s look at the data</p>
-<pre class="r"><code>storms</code></pre>
-<pre><code>## # A tibble: 902,297 x 37
-##    STATE__ BGN_DATE BGN_TIME TIME_ZONE COUNTY COUNTYNAME STATE EVTYPE
-##      &lt;dbl&gt; &lt;fct&gt;    &lt;fct&gt;    &lt;fct&gt;      &lt;dbl&gt; &lt;fct&gt;      &lt;fct&gt; &lt;fct&gt; 
-##  1       1 4/18/19~ 0130     CST           97 MOBILE     AL    TORNA~
-##  2       1 4/18/19~ 0145     CST            3 BALDWIN    AL    TORNA~
-##  3       1 2/20/19~ 1600     CST           57 FAYETTE    AL    TORNA~
-##  4       1 6/8/195~ 0900     CST           89 MADISON    AL    TORNA~
-##  5       1 11/15/1~ 1500     CST           43 CULLMAN    AL    TORNA~
-##  6       1 11/15/1~ 2000     CST           77 LAUDERDALE AL    TORNA~
-##  7       1 11/16/1~ 0100     CST            9 BLOUNT     AL    TORNA~
-##  8       1 1/22/19~ 0900     CST          123 TALLAPOOSA AL    TORNA~
-##  9       1 2/13/19~ 2000     CST          125 TUSCALOOSA AL    TORNA~
-## 10       1 2/13/19~ 2000     CST           57 FAYETTE    AL    TORNA~
-## # ... with 902,287 more rows, and 29 more variables: BGN_RANGE &lt;dbl&gt;,
-## #   BGN_AZI &lt;fct&gt;, BGN_LOCATI &lt;fct&gt;, END_DATE &lt;fct&gt;, END_TIME &lt;fct&gt;,
-## #   COUNTY_END &lt;dbl&gt;, COUNTYENDN &lt;lgl&gt;, END_RANGE &lt;dbl&gt;, END_AZI &lt;fct&gt;,
-## #   END_LOCATI &lt;fct&gt;, LENGTH &lt;dbl&gt;, WIDTH &lt;dbl&gt;, F &lt;int&gt;, MAG &lt;dbl&gt;,
-## #   FATALITIES &lt;dbl&gt;, INJURIES &lt;dbl&gt;, PROPDMG &lt;dbl&gt;, PROPDMGEXP &lt;fct&gt;,
-## #   CROPDMG &lt;dbl&gt;, CROPDMGEXP &lt;fct&gt;, WFO &lt;fct&gt;, STATEOFFIC &lt;fct&gt;,
-## #   ZONENAMES &lt;fct&gt;, LATITUDE &lt;dbl&gt;, LONGITUDE &lt;dbl&gt;, LATITUDE_E &lt;dbl&gt;,
-## #   LONGITUDE_ &lt;dbl&gt;, REMARKS &lt;fct&gt;, REFNUM &lt;dbl&gt;</code></pre>
+<pre class="r"><code>head(storms)</code></pre>
+<pre><code>##   STATE__           BGN_DATE BGN_TIME TIME_ZONE COUNTY COUNTYNAME STATE
+## 1       1  4/18/1950 0:00:00     0130       CST     97     MOBILE    AL
+## 2       1  4/18/1950 0:00:00     0145       CST      3    BALDWIN    AL
+## 3       1  2/20/1951 0:00:00     1600       CST     57    FAYETTE    AL
+## 4       1   6/8/1951 0:00:00     0900       CST     89    MADISON    AL
+## 5       1 11/15/1951 0:00:00     1500       CST     43    CULLMAN    AL
+## 6       1 11/15/1951 0:00:00     2000       CST     77 LAUDERDALE    AL
+##    EVTYPE BGN_RANGE BGN_AZI BGN_LOCATI END_DATE END_TIME COUNTY_END
+## 1 TORNADO         0                                               0
+## 2 TORNADO         0                                               0
+## 3 TORNADO         0                                               0
+## 4 TORNADO         0                                               0
+## 5 TORNADO         0                                               0
+## 6 TORNADO         0                                               0
+##   COUNTYENDN END_RANGE END_AZI END_LOCATI LENGTH WIDTH F MAG FATALITIES
+## 1         NA         0                      14.0   100 3   0          0
+## 2         NA         0                       2.0   150 2   0          0
+## 3         NA         0                       0.1   123 2   0          0
+## 4         NA         0                       0.0   100 2   0          0
+## 5         NA         0                       0.0   150 2   0          0
+## 6         NA         0                       1.5   177 2   0          0
+##   INJURIES PROPDMG PROPDMGEXP CROPDMG CROPDMGEXP WFO STATEOFFIC ZONENAMES
+## 1       15    25.0          K       0                                    
+## 2        0     2.5          K       0                                    
+## 3        2    25.0          K       0                                    
+## 4        2     2.5          K       0                                    
+## 5        2     2.5          K       0                                    
+## 6        6     2.5          K       0                                    
+##   LATITUDE LONGITUDE LATITUDE_E LONGITUDE_ REMARKS REFNUM
+## 1     3040      8812       3051       8806              1
+## 2     3042      8755          0          0              2
+## 3     3340      8742          0          0              3
+## 4     3458      8626          0          0              4
+## 5     3412      8642          0          0              5
+## 6     3450      8748          0          0              6</code></pre>
 <p>Formatting the column names</p>
 <pre class="r"><code>names(storms)&lt;- tolower(make.names(names(storms), unique = T, allow_ = F))</code></pre>
 <div id="population-damage-by-event-type" class="section level3">
 <h3>Population damage by event type</h3>
-<p>The columns we are interested are “fatalities” and “injuries”. The storm database contain only <em>direct</em> injuries, in other words the ones that can be directly attributed to the observed weather event. Let’s look at the summary of those columns and see if there’s any missing data.</p>
+<p>The columns we are interested in are “fatalities” and “injuries”. The storm database contain only <em>direct</em> injuries, in other words the ones that can be directly attributed to the observed weather event. Let’s look at the summary of those columns and see if there’s any missing data.</p>
 <pre class="r"><code>summary(storms$fatalities)</code></pre>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 ##   0.0000   0.0000   0.0000   0.0168   0.0000 583.0000</code></pre>
@@ -186,7 +203,7 @@ storms &lt;- tbl_df(read.csv(&quot;storms.bz2&quot;))</code></pre>
 ## 465934      1      8      5    216     25     13      4      4     28 
 ##      6      7      8      B      h      H      K      m      M 
 ##      4      5      1     40      1      6 424665      7  11330</code></pre>
-<p>Unfortunately we can see that not all the numbers are properly formatted as per NWS storm data documentation. In particular, letters “K”, “M” and “B” mean 10^3, 10^6 and 10^9 magnifyers respectively, and we can assume that “H/h” would mean hundreds. We can also assume that numbers directly signify magnitude, and “”, “-”, “0” mean magnitude of 1. Rest of the symbols remain mysterious and demand further investigation, but seeing that they account for relatively small amount of observations we would ignore them for this research.</p>
+<p>Unfortunately we can see that not all the numbers are properly formatted as per NWS storm data documentation. In particular, letters “K”, “M” and “B” mean 10^3, 10^6 and 10^9 magnifyers respectively, and we can assume that “H/h” would mean hundreds. We can also assume that numbers directly signify magnitude, and “”, “-”, “0” mean magnitude of 1. Rest of the symbols remain mysterious and demand further investigation, but seeing that they account for relatively small amount of observations we would ignore them for this research and treat them as missing ones.</p>
 <pre class="r"><code>storms &lt;- storms %&gt;%
         mutate(propdmg.m = with(., case_when(
         (propdmgexp == &quot;h&quot; | propdmgexp == &quot;H&quot;)~2,
@@ -194,9 +211,9 @@ storms &lt;- tbl_df(read.csv(&quot;storms.bz2&quot;))</code></pre>
         (propdmgexp == &quot;m&quot; | propdmgexp == &quot;M&quot;)~6,
         (propdmgexp == &quot;b&quot; | propdmgexp == &quot;B&quot;)~9,
         (propdmgexp %in% c(&quot;&quot;,&quot;0&quot;,&quot;-&quot;))~1,
-        (propdmgexp %in% as.character(1:9))~ as.numeric(as.character(propdmgexp)))))</code></pre>
-<p>Calculate the final loss in USD</p>
-<pre class="r"><code>storms&lt;- storms %&gt;% mutate(propdmg.v = propdmg*10^propdmg.m)</code></pre>
+        (propdmgexp %in% as.character(1:9))~ as.numeric(as.character(propdmgexp)))))
+##Calculate the final loss in USD
+storms &lt;- storms %&gt;% mutate(propdmg.v = propdmg*10^propdmg.m)</code></pre>
 <p>We deal similarly with crops damage data</p>
 <pre class="r"><code>storms &lt;- storms %&gt;%
         mutate(cropdmg.m = with(., case_when(
@@ -245,25 +262,20 @@ storms.toph</code></pre>
         top_n(10, wt = total) %&gt;%
         arrange (desc(total))</code></pre>
 <pre class="r"><code>storms.econ</code></pre>
-<pre><code>## # A tibble: 10 x 4
-##    evtype               totalprop   totalcrop        total
-##    &lt;fct&gt;                    &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
-##  1 FLOOD             144657709870  5661968450 150319678320
-##  2 HURRICANE/TYPHOON  69305840000  2607872800  71913712800
-##  3 STORM SURGE        43323536000        5000  43323541000
-##  4 DROUGHT             1046106000 13972566000  15018672000
-##  5 HURRICANE          11868319010  2741910000  14610229010
-##  6 RIVER FLOOD         5118945500  5029459000  10148404500
-##  7 ICE STORM           3944928310  5022113500   8967041810
-##  8 TROPICAL STORM      7703890550   678346000   8382236550
-##  9 WINTER STORM        6688497260    26944000   6715441260
-## 10 WILDFIRE            4765114000   295472800   5060586800</code></pre>
+<pre><code>##               evtype    totalprop   totalcrop        total
+## 1              FLOOD 144657709870  5661968450 150319678320
+## 2  HURRICANE/TYPHOON  69305840000  2607872800  71913712800
+## 3        STORM SURGE  43323536000        5000  43323541000
+## 4            DROUGHT   1046106000 13972566000  15018672000
+## 5          HURRICANE  11868319010  2741910000  14610229010
+## 6        RIVER FLOOD   5118945500  5029459000  10148404500
+## 7          ICE STORM   3944928310  5022113500   8967041810
+## 8     TROPICAL STORM   7703890550   678346000   8382236550
+## 9       WINTER STORM   6688497260    26944000   6715441260
+## 10          WILDFIRE   4765114000   295472800   5060586800</code></pre>
 <p>We can see that for crop the most damaging event is DROUGHT</p>
-<p>And for property respectively:</p>
-<pre class="r"><code>storms.econ$evtype[which.max(storms.econ$totalprop)]</code></pre>
-<pre><code>## [1] FLOOD
-## 985 Levels:    HIGH SURF ADVISORY  COASTAL FLOOD ... WND</code></pre>
-<p>However for total economic impact we are looking at overall cost</p>
+<p>And for property - FLOOD</p>
+<p>However for total economic impact we are looking at overall costs</p>
 <pre class="r"><code>library(ggplot2)
 ggplot(data=storms.econ, aes(x=reorder(evtype, -total), y=total/1000000000)) + 
         geom_bar(stat=&quot;identity&quot;) + 
@@ -272,6 +284,39 @@ ggplot(data=storms.econ, aes(x=reorder(evtype, -total), y=total/1000000000)) +
                 x = &quot;Event Type&quot;) + 
         theme(axis.text.x = element_text(angle = 90, vjust=0.5))</code></pre>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="environment-data" class="section level3">
+<h3>Environment data</h3>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>## R version 3.5.1 (2018-07-02)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 17134)
+## 
+## Matrix products: default
+## 
+## locale:
+## [1] LC_COLLATE=English_United States.1252 
+## [2] LC_CTYPE=English_United States.1252   
+## [3] LC_MONETARY=English_United States.1252
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.1252    
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] ggplot2_3.1.0
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rcpp_0.12.19     bindr_0.1.1      knitr_1.20       magrittr_1.5    
+##  [5] tidyselect_0.2.5 munsell_0.5.0    colorspace_1.3-2 R6_2.3.0        
+##  [9] rlang_0.3.0.1    stringr_1.3.1    plyr_1.8.4       dplyr_0.7.8     
+## [13] tools_3.5.1      grid_3.5.1       gtable_0.2.0     withr_2.1.2     
+## [17] htmltools_0.3.6  assertthat_0.2.0 yaml_2.2.0       lazyeval_0.2.1  
+## [21] rprojroot_1.3-2  digest_0.6.18    tibble_1.4.2     crayon_1.3.4    
+## [25] bindrcpp_0.2.2   purrr_0.2.5      glue_1.3.0       evaluate_0.12   
+## [29] rmarkdown_1.10   labeling_0.3     stringi_1.2.4    compiler_3.5.1  
+## [33] pillar_1.3.0     scales_1.0.0     backports_1.1.2  pkgconfig_2.0.2</code></pre>
 </div>
 </div>
 
