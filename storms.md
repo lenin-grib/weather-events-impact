@@ -9,7 +9,7 @@ output:
 
 ## Synopsys
 
-This project involves exploring the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database and aims at exploring the correlation between event types and the magnitude of health and economic impact they bear. Tornados were identified as most dangerous to population, whereas floods have the most devastating economic consequences.
+This project involved exploring the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database and aimed at exploring the correlation between event types and the magnitude of health and economic impact they bear. For that the amount of fatalities/injuries and the total economical damage by event type were calculated. Tornados were identified as most dangerous to population, whereas floods have the most devastating economic consequences.
 
 ## Loading and Processing the Raw Data
 
