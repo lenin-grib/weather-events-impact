@@ -11,9 +11,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
 
 ## Synopsys
 
-Storms and other severe weather events can cause both public health and economic problems for communities and municipalities. Many severe events can result in fatalities, injuries, and property damage, and preventing such outcomes to the extent possible is a key concern.
-
-This project involves exploring the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database and aims at exploring the correlation between event types and the magnitude of health and economic impact they bear.
+This project involves exploring the U.S. National Oceanic and Atmospheric Administration's (NOAA) storm database and aims at exploring the correlation between event types and the magnitude of health and economic impact they bear. Tornados were identified as most dangerous to population, whereas floods have the most devastating economic consequences.
 
 ## Loading and Processing the Raw Data
 
